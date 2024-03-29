@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  gha-testing: # Update reference.
+    container_name: gha-testing # Update reference.
+    image: local:gha
+    volumes:
+      - ./src:/var/www/app
+      - ./database:/database
+      - /var/www/symf/var/
+    working_dir: /var/www/app
+    environment:
+      TZ: Europe/Berlin
+      DB_SQLITE_FILENAME: app.db
+      PHP_IDE_CONFIG: "serverName=symf-app.local.com" # Update reference.
