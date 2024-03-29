@@ -22,7 +22,7 @@ jobs:
           - dockerfile: Dockerfile
             prefix: ~
           - dockerfile: Dockerfile.alpine
-            prefix: alpine
+            prefix: alpine-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
