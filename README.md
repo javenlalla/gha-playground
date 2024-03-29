@@ -11,8 +11,8 @@ Playground for testing Github Actions workflows.
 - Build Multiple Images: <https://github.com/docker/build-push-action/issues/561>
 - Explicit Tag Formatting: <https://stackoverflow.com/a/70869609>
 
-## Local Test Image
+## Building Local Test Image
 
 ```bash
-time docker build -t local:gha -f Dockerfile.prod .
+time docker build -t local:gha -f Dockerfile.test .
 ```
