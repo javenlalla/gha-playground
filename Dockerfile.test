@@ -45,7 +45,11 @@ COPY src /var/www/app
 WORKDIR /var/www/app
 RUN rm -rf var
 
+RUN cp .env.sample .env
 RUN composer install
+
+# Fix folder permissions.
+RUN chown -R www-data:www-data /var/www/app
 
 # Configure Entrypoint.
 COPY entrypoint.sh /entrypoint.sh

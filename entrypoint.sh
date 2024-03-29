@@ -69,10 +69,12 @@ if [[ ! -z $DB_HOST || ! -z $DB_SQLITE_FILENAME ]]; then
 fi
 
 # Fix permissions, espeically to address `var` folder not being writeable for cache and logging.
-if [ -d "/var/www/app" ]; then
-    # Fix permissions, especially to address `var` folder not being writeable for cache and logging.
-    echo "Fixing application folder permissions."
-    chown -R www-data:www-data /var/www/app
+if [[ $APP_ENV != "test"]]; then
+    if [ -d "/var/www/app" ]; then
+        # Fix permissions, especially to address `var` folder not being writeable for cache and logging.
+        echo "Fixing application folder permissions."
+        chown -R www-data:www-data /var/www/app
+    fi
 fi
 
 # Container is set up. Start services.
