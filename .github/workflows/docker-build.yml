@@ -20,9 +20,9 @@ jobs:
       matrix:
         include:
           - dockerfile: Dockerfile
-            flavor: ''
+            image: javenlalla/gha-playground
           - dockerfile: Dockerfile.alpine
-            flavor: 'alpine-'
+            image: javenlalla/gha-playground:alpine
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
             javenlalla/gha-playground
           # generate Docker tags based on the following events/attributes
           tags: |
-            type=ref,event=${{ matrix.dockerfile }}branch
+            type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
