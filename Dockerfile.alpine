@@ -1,0 +1,3 @@
+FROM php:fpm-alpine
+
+ENV SOME_VAR=foo

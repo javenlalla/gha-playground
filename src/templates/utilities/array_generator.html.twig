@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <span>
+    {% for arrayEl in targetArray %}
+        {{ arrayEl }},
+    {% endfor %}
+    </span>
+
+{% endblock %}
