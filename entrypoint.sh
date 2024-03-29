@@ -38,10 +38,11 @@ export DATABASE_URL="sqlite:////database/app.db"
 export APP_SECRET=$(openssl rand -base64 40 | tr -d /=+ | cut -c -32)
 echo "APP_SECRET=${APP_SECRET}" >> .env
 
-if [[ $APP_ENV != "prod" && $APP_ENV != "test"]]; then
-  echo "Installing composer dependencies. This will take a few minutes since xdebug is installed."
-  composer install
-fi
+# Disable until fixed.
+# if [[ $APP_ENV != "prod" && $APP_ENV != "test"]]; then
+#   echo "Installing composer dependencies. This will take a few minutes since xdebug is installed."
+#   composer install
+# fi
 
 # if [[ ! -z $DB_HOST ]]; then
 #     # Wait for the database to be accessible before proceeding.
