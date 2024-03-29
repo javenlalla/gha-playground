@@ -15,4 +15,5 @@ Playground for testing Github Actions workflows.
 
 ```bash
 time docker build -t local:gha -f Dockerfile.test .
+docker-compose -f docker-compose.test.yml up -d
 ```
