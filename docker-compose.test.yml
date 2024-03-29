@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  gha-testing:
+    container_name: gha-testing
+    build:
+      context: .
+      dockerfile: ./Dockerfile.test
+    working_dir: /var/www/app
+    environment:
+      DB_SQLITE_FILENAME: app.db
