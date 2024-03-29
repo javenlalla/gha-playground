@@ -20,9 +20,9 @@ jobs:
       matrix:
         include:
           - dockerfile: Dockerfile
-            image: javenlalla/gha-playground
+            prefix: ~
           - dockerfile: Dockerfile.alpine
-            image: javenlalla/gha-playground:alpine
+            prefix: alpine
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ${{ matrix.image }}
+            javenlalla/gha-playground
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
@@ -41,6 +41,9 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
+          flavor: |
+            latest=auto
+            prefix=${{ matrix.prefix }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
