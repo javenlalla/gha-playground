@@ -45,6 +45,8 @@ COPY src /var/www/app
 WORKDIR /var/www/app
 RUN rm -rf var
 
+RUN composer install
+
 # Configure Entrypoint.
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod u+x /entrypoint.sh
