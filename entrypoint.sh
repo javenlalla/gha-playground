@@ -32,8 +32,8 @@ fi
 
 # Generate APP_SECRET.
 export DATABASE_URL="sqlite:////database/app.db"
-    echo "Database URL configured as: ${DATABASE_URL}"
-    echo "DATABASE_URL=${DATABASE_URL}" >> .env
+echo "Database URL configured as: ${DATABASE_URL}"
+echo "DATABASE_URL=${DATABASE_URL}" >> .env
 
 export APP_SECRET=$(openssl rand -base64 40 | tr -d /=+ | cut -c -32)
 echo "APP_SECRET=${APP_SECRET}" >> .env
@@ -60,7 +60,7 @@ fi
 #     fi
 # fi
 
-if [[ ! -z $DB_HOST || ! -z $DB_SQLITE_FILENAME ]]; then
+if [[ ! -z $DATABASE_URL ]]; then
     if [ -f /var/www/app/migrations/Version*.php ]; then
         # Once database is reachable, execute any pending migrations and console commands.
         echo "Migration files exist. Execute migration."
