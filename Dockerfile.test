@@ -1,6 +1,7 @@
 # Build the main image.
 FROM php:8.1.7-fpm-buster
 
+ENV APP_ENV=test
 ENV APP_PUBLIC_PATH=/var/www/app/public
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV APP_ID=gha-app
