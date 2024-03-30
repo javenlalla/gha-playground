@@ -38,11 +38,10 @@ export DATABASE_URL="sqlite:////database/app.db"
 export APP_SECRET=$(openssl rand -base64 40 | tr -d /=+ | cut -c -32)
 echo "APP_SECRET=${APP_SECRET}" >> .env
 
-# Disable until fixed.
-# if [[ $APP_ENV != "prod" && $APP_ENV != "test"]]; then
-#   echo "Installing composer dependencies. This will take a few minutes since xdebug is installed."
-#   composer install
-# fi
+if [[ $APP_ENV != "prod" && $APP_ENV != "test" ]]; then
+  echo "Installing composer dependencies. This will take a few minutes since xdebug is installed."
+  composer install
+fi
 
 # if [[ ! -z $DB_HOST ]]; then
 #     # Wait for the database to be accessible before proceeding.
@@ -70,13 +69,13 @@ if [[ ! -z $DB_HOST || ! -z $DB_SQLITE_FILENAME ]]; then
 fi
 
 # Fix permissions, espeically to address `var` folder not being writeable for cache and logging.
-# if [[ $APP_ENV != "test"]]; then
-#     if [ -d "/var/www/app" ]; then
-#         # Fix permissions, especially to address `var` folder not being writeable for cache and logging.
-#         echo "Fixing application folder permissions."
-#         chown -R www-data:www-data /var/www/app
-#     fi
-# fi
+if [[ $APP_ENV != "test" ]]; then
+    if [ -d "/var/www/app" ]; then
+        # Fix permissions, especially to address `var` folder not being writeable for cache and logging.
+        echo "Fixing application folder permissions."
+        chown -R www-data:www-data /var/www/app
+    fi
+fi
 
 # Container is set up. Start services.
 echo "Starting services."
