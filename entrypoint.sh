@@ -34,7 +34,7 @@ fi
 
 if [[ "$dev_env" = true ]]; then
     # Note: it is intentional that the APP_ENV is written to the .env file instead of declared in the Dockerfile.dev because the container Environment Variables take precedence over the .env file(s).
-    # As a result, running tests in the development environment fail due to not switching to the test environment programmatically when running. The following error is thrown:
+    # As a result, running tests in the development environment fails due to not switching to the test environment programmatically when running. The following error is thrown:
     # Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException: You have requested a non-existent service "test.service_container". Did you mean this: "service_container"?
     # So to address this and have the command line switch environments correctly during tests, the APP_ENV variable is written to the .env file.
     # See the following page for more info: https://symfony.com/doc/current/configuration.html#overriding-environment-values-via-env-local
